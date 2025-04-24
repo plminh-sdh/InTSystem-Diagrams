@@ -235,7 +235,7 @@ classDiagram
     QuizzesController --> IQuizService
     RecommendationsController --> IRecommendationService
     HintsController --> IHintService
-    ReportsController --> IReportController
+    ReportsController --> IReportService
 
     %% Service-Model Relationships
     IUserService --> User
@@ -246,5 +246,5 @@ classDiagram
     IRecommendationService --> User
     IHintService --> User
     IHintService --> Quiz
-    IReportController --> User
+    IReportService --> User
 ```
