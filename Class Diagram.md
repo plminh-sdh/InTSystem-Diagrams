@@ -139,6 +139,11 @@ classDiagram
         + get_course(course_id: int): Course
     }
 
+    class IGenerativeAiService {
+        <<interface>>
+        + generate_content(prompt: str): str
+    }
+
     class IQuizService {
         <<interface>>
         + generate_quiz(lesson_id: int): Quiz
@@ -171,6 +176,7 @@ classDiagram
 
     class CoursesController {
         - courseService: ICourseService
+        - generativeAiService: IGenerativeAiService
         + create_course()
         + delete_course()
         + get_course()
@@ -232,6 +238,7 @@ classDiagram
     %% Controller-Service Relationships
     UsersController --> IUserService
     CoursesController --> ICourseService
+    CoursesController --> IGenerativeAiService
     QuizzesController --> IQuizService
     RecommendationsController --> IRecommendationService
     HintsController --> IHintService
@@ -240,6 +247,8 @@ classDiagram
     %% Service-Model Relationships
     IUserService --> User
     ICourseService --> Course
+    IGenerativeAiService --> Course
+    IGenerativeAiService --> User
     IQuizService --> Quiz
     IQuizService --> User
     IQuizService --> QuizResult
